@@ -4,7 +4,7 @@ const nextConfig: NextConfig = {
   /* config options here */
   output: 'standalone',
 
-  // optional: matikan telemetry saat build container
+  // optional: turn off telemetry when build container
   telemetry: false,
 }
 
