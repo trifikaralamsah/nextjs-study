@@ -1,0 +1,4 @@
+{
+  "pre-commit": "npm run typecheck && ./node_modules/.bin/nano-staged",
+  "commit-msg": "./node_modules/.bin/commitlint -e \"$@\""
+}
