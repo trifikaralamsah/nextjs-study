@@ -6,10 +6,12 @@
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "typecheck": "tsc --noEmit --pretty"
   },
   "dependencies": {
-    "next": "15.5.4",
+    "next": "^16.0.1",
     "react": "19.1.0",
     "react-dom": "19.1.0"
   },
