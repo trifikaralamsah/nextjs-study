@@ -11,9 +11,9 @@
     "typecheck": "tsc --noEmit --pretty"
   },
   "dependencies": {
-    "next": "^16.0.1",
-    "react": "19.1.0",
-    "react-dom": "19.1.0"
+    "next": "^16.0.10",
+    "react": "19.2.3",
+    "react-dom": "19.2.3"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^4.13.2",
@@ -24,6 +24,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "baseline-browser-mapping": "^2.9.11",
     "eslint": "^9.37.0",
     "eslint-plugin-format": "^1.0.1",
     "eslint-plugin-prettier": "^5.4.0",
@@ -33,5 +34,9 @@
     "prettier": "^3.6.2",
     "tailwindcss": "^4",
     "typescript": "^5"
+  },
+  "volta": {
+    "node": "22.16.0",
+    "npm": "10.9.2"
   }
 }
