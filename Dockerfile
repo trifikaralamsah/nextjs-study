@@ -1,7 +1,7 @@
 # =====================
 # 1. Dependencies stage
 # =====================
-FROM node:22-alpine AS deps
+FROM node:22.21-alpine AS deps
 
 WORKDIR /app
 
@@ -14,7 +14,7 @@ RUN npm ci --verbose --ignore-scripts --no-audit --no-fund
 # =====================
 # 2. Builder stage
 # =====================
-FROM node:22-alpine AS builder
+FROM node:22.21-alpine AS builder
 
 WORKDIR /app
 
@@ -28,7 +28,7 @@ RUN npm run build
 # =====================
 # 3. Runner stage (Production)
 # =====================
-FROM node:22-alpine AS runner
+FROM node:22.21-alpine AS runner
 
 WORKDIR /app
 
