@@ -1,0 +1,52 @@
+# =====================
+# 1. Dependencies stage
+# =====================
+FROM node:22-alpine AS deps
+
+
+WORKDIR /app
+
+# Copy package files only
+COPY package.json package-lock.json ./
+
+# Install dependencies
+RUN npm ci
+
+# =====================
+# 2. Builder stage
+# =====================
+FROM node:22-alpine AS builder
+
+WORKDIR /app
+
+COPY --from=deps /app/node_modules ./node_modules
+COPY . .
+
+# Build the application
+RUN npm run build
+
+# =====================
+# 3. Runner stage (Production)
+# =====================
+FROM node:22-alpine AS runner
+
+WORKDIR /app
+
+ENV NODE_env=production
+
+# Create non-root user
+RUN addgroup -g 1001 -S nodejs \
+    && adduser -S nextjs -u 1001
+
+# Copy build application from builder stage
+COPY --from=builder /app/public ./public
+COPY --from=builder /app/.next ./.next
+COPY --from=builder /app/package.json ./package.json
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/next.config.ts ./next.config.ts
+
+USER nextjs
+
+EXPOSE 3000
+
+CMD ["npm", "run", "start"]
