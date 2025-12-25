@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "study-546a7"
+  },
+  "targets": {
+    "study-546a7": {
+      "hosting": {
+        "development": [
+          "nextjs-study-16fi"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}
